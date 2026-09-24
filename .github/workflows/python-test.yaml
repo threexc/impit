@@ -11,10 +11,6 @@ on:
         - "impit/**"
         - 'Cargo.*'
   pull_request:
-    paths:
-        - 'impit-python/**'
-        - 'impit/**'
-        - 'Cargo.*'
   workflow_dispatch:
   workflow_call:
     inputs:
@@ -37,7 +33,6 @@ jobs:
     secrets: inherit
 
   linux-build:
-    needs: code_checks
     runs-on: ${{ matrix.platform.runner }}
     strategy:
       matrix:
@@ -131,7 +126,6 @@ jobs:
           python -m pytest
 
   musllinux:
-    needs: code_checks
     runs-on: ${{ matrix.platform.runner }}
     strategy:
       matrix:
